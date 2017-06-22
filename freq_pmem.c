@@ -204,7 +204,7 @@ int main(int argc, char *argv[])
 
 	for (int i = 0; i < nfiles; i++)
 		if ((errno = pthread_create(&tids[i], NULL,
-				count_all_words, (void *)argv[arg])) != 0)
+				count_all_words, (void *)argv[arg++])) != 0)
 			err(1, "pthread_create %d of %d", i, nfiles);
 
 	for (int i = 0; i < nfiles; i++)
