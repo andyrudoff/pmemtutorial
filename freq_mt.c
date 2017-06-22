@@ -69,9 +69,8 @@ void count(const char *word)
 			return;
 		}
 
-	/* upgrade to the bucket write lock */
+	/* drop the bucket read lock */
 	pthread_rwlock_unlock(&H[h].rwlock);
-	pthread_rwlock_wrlock(&H[h].rwlock);
 
 	/* allocate new entry in table */
 	if ((ep = calloc(1, sizeof(*ep))) == NULL)
@@ -81,6 +80,9 @@ void count(const char *word)
 		err(1, "strdup");
 
 	ep->count = 1;
+
+	/* upgrade to the bucket write lock */
+	pthread_rwlock_wrlock(&H[h].rwlock);
 
 	/* add it to the front of the linked list */
 	ep->next = H[h].entries;
