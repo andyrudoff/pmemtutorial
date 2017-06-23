@@ -33,15 +33,15 @@ C program to print the frequecy counts from the pmem-reseident hash table.
 ### Using the programs
 
 ```
-$ git clone http://github.com/andyrudoff/freq
-Cloning into 'freq'...
+$ git clone http://github.com/andyrudoff/pmemtutorial
+Cloning into 'pmemtutorial'...
 remote: Counting objects: 13, done.
 remote: Compressing objects: 100% (9/9), done.
 remote: Total 13 (delta 2), reused 13 (delta 2), pack-reused 0
 Unpacking objects: 100% (13/13), done.
 Checking connectivity... done.
 
-$ cd freq
+$ cd pmemtutorial
 
 $ make
 cc -g -Wall -Werror -std=gnu99   -c -o freq.o freq.c
