@@ -26,14 +26,14 @@
 #define LAYOUT "freq"
 #define NBUCKETS 10007
 
-using nvml::obj::p;
-using nvml::obj::persistent_ptr;
-using nvml::obj::pool;
-using nvml::obj::pool_base;
-using nvml::obj::make_persistent;
-using nvml::obj::delete_persistent;
-using nvml::obj::transaction;
-using nvml::obj::mutex;
+using pmem::obj::p;
+using pmem::obj::persistent_ptr;
+using pmem::obj::pool;
+using pmem::obj::pool_base;
+using pmem::obj::make_persistent;
+using pmem::obj::delete_persistent;
+using pmem::obj::transaction;
+using pmem::obj::mutex;
 
 /* entries in a bucket are a linked list of struct entry */
 struct entry {
@@ -41,7 +41,7 @@ struct entry {
 	entry(int ct, const char *wrd,
 		const persistent_ptr<struct entry> &nxt) :
 		next{nxt},
-		word{pmemobj_tx_strdup(wrd, nvml::detail::type_num<char>())},
+		word{pmemobj_tx_strdup(wrd, pmem::detail::type_num<char>())},
 		count{ct}
 	{}
 
