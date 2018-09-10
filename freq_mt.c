@@ -81,6 +81,7 @@ void count(const char *word)
 	/* add it to the front of the linked list */
 	ep->next = H[h].entries;
 	H[h].entries = ep;
+	pthread_mutex_init(&ep->mtx, NULL);
 
 	pthread_mutex_unlock(&H[h].mtx);
 }
